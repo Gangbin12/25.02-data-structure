@@ -21,9 +21,8 @@ public:
     {
         size = 0;
         head = nullptr;
-        currentNode 
-    }
-        
+    }  
+
     void push_front(T data)
     {
         Node* newNode = new Node;
@@ -59,15 +58,66 @@ public:
         }
         else
         {
-            currentNode
+            Node* currentNode = head;
+            
+            while (currentNode->next != nullptr)
+            {
+                currentNode = currentNode->next;
+            }
+
+            currentNode->next = newNode;
 
             newNode->data = data;
             newNode->next = nullptr;
+        }
 
-            head->next = newNode
+        size++;
+    }
+
+    void pop_front()
+    {
+        if (head == nullptr)
+        {
+            cout << "Linked List is Empty" << endl;
+        }
+        else
+        {
+            Node* deleteNode = head;
+
+            head = deleteNode->next;
+
+            delete deleteNode;
+
+            size--;
         }
     }
 
+    void show()
+    {
+        Node* currentNode = head;
+
+        while (currentNode != nullptr)
+        {
+            cout << currentNode->data << " ";
+
+            currentNode = currentNode->next;
+        }
+    }
+
+    // 주말에 하기
+    void pop_back()
+    {
+        if ()
+        {
+            previousNode deleteNode
+        }
+        else
+        {
+
+        }
+        
+        size--
+    }
 };
 
 int main()
@@ -76,9 +126,11 @@ int main()
 
     singleLinkedList.push_front(10);
     singleLinkedList.push_front(20);
-    
+
+    singleLinkedList.push_back(5);
     singleLinkedList.push_back(10);
-    singleLinkedList.push_back(20);
+
+    singleLinkedList.show();
 
     return 0;
     
@@ -93,5 +145,4 @@ int main()
    //     struct Node    head
    // data  next
 
-    return 0;
 }
