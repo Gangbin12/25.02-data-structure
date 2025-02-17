@@ -3,146 +3,55 @@
 using namespace std;
 
 template<typename T>
-class SingleLinkedList
+class DoubleLinkedList
 {
-private:
-    int size;
+private :
+	struct Node
+	{
+		T data;
+		Node* next;
+		Node* previous;
+	};
 
-    struct Node
-    {
-        T data;
-        Node* next;
-    };
+	Node * head;
+	Node * tail;
 
-    Node* head;
+	int size;
 public:
 
-    SingleLinkedList()
-    {
-        size = 0;
-        head = nullptr;
-    }  
+	DoubleLinkedList()
+	{
+		head = nullptr;
+		next = nullptr;
+		size = 0;
+	}
 
-    void push_front(T data)
-    {
-        Node* newNode = new Node;
+	void push_front(T data)
+	{
+		Node* newNode = new Node;
 
-        if (head == nullptr)
-        {
-            head = newNode;
+		if (head == nullptr)
+		{
+			head = newNode;
+			tail = newNode;
+			newNode->data = data;
+			newNode->next = nullptr;
+			newNode->previous = nullptr;
+		}
+		else
+		{
+			newNode->data = data;
+			newNode->next = head;
 
-            newNode->data = data;
-            newNode->next = nullptr;
-        }
-        else
-        {
-            newNode->data = data;
-            newNode->next = head;
-            
-            head = newNode;
-        }
-
-        size++;
-    }
-
-    void push_back(T data)
-    {
-        Node* newNode = new Node;
-
-        if (head == nullptr)
-        {
-            head = newNode;
-
-            newNode->data = data;
-            newNode->next = nullptr;
-        }
-        else
-        {
-            Node* currentNode = head;
-            
-            while (currentNode->next != nullptr)
-            {
-                currentNode = currentNode->next;
-            }
-
-            currentNode->next = newNode;
-
-            newNode->data = data;
-            newNode->next = nullptr;
-        }
-
-        size++;
-    }
-
-    void pop_front()
-    {
-        if (head == nullptr)
-        {
-            cout << "Linked List is Empty" << endl;
-        }
-        else
-        {
-            Node* deleteNode = head;
-
-            head = deleteNode->next;
-
-            delete deleteNode;
-
-            size--;
-        }
-    }
-
-    void show()
-    {
-        Node* currentNode = head;
-
-        while (currentNode != nullptr)
-        {
-            cout << currentNode->data << " ";
-
-            currentNode = currentNode->next;
-        }
-    }
-
-    // 주말에 하기
-    void pop_back()
-    {
-        if ()
-        {
-            previousNode deleteNode
-        }
-        else
-        {
-
-        }
-        
-        size--
-    }
+			tail = newNode;
+		}
+	}
 };
+
 
 int main()
 {
-    SingleLinkedList<int> singleLinkedList;
+   
 
-    singleLinkedList.push_front(10);
-    singleLinkedList.push_front(20);
-
-    singleLinkedList.push_back(5);
-    singleLinkedList.push_back(10);
-
-    singleLinkedList.show();
-
-    return 0;
-    
-
-
-   // 단일 연결리스트
-   // 
-   //     class SingleLinkedList {};
-   // 
-   //           >   
-   //                   Stack- Heap
-   //     struct Node    head
-   // data  next
-
+	return 0;
 }
