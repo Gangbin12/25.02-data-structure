@@ -9,7 +9,7 @@ private:
 	struct Node
 	{
 		T data;
-		Node * next;
+		Node* next;
 	};
 
 	int size;
@@ -26,11 +26,9 @@ public:
 	{
 		Node* newNode = new Node;
 
-		currentNode;
-
 		newNode->data = data;
 
-		if(head == nullptr)
+		if (head == nullptr)
 		{
 			head = newNode;
 
@@ -39,7 +37,7 @@ public:
 		else
 		{
 			newNode->next = head->next;
-			
+
 			head->next = newNode;
 
 			head = newNode;
@@ -48,12 +46,119 @@ public:
 		size++;
 	}
 
-	void 
-};
+	void pop_back()
+	{
 
+		if (head == nullptr)
+		{
+			cout << "Linked list is Empty" << endl;
+		}
+		else
+		{
+			Node * deleteNode = head;
+
+			Node * previousNode = nullptr;
+
+			if (size == 1)
+			{
+
+			}
+			else
+			{
+
+			}
+
+		}
+		size--;
+	}
+
+	void pop_front()
+	{
+		if (head == nullptr)
+		{
+			cout << "Linked List is empty" << endl;
+		}
+		else
+		{
+			Node* deleteNode = head->next;
+
+			if (head == head->next)
+			{
+				head = nullptr;
+			}
+			else
+			{
+				head->next = deleteNode->next;
+			}
+
+			delete deleteNode;
+
+			size--;
+		}
+	}
+
+	void push_front(T data)
+	{
+		Node* newNode = new Node;
+
+		newNode->data = data;
+
+		if (head == nullptr)
+		{
+			head = newNode;
+			newNode->next = head;
+		}
+		else
+		{
+			newNode->next = head->next;
+
+			head->next = newNode;
+		}
+
+		size++;
+	}
+
+	void show()
+	{
+		if (head != nullptr)
+		{
+			Node* currentNode = head->next;
+
+			for (int i = 0; i < size; i++)
+			{
+				cout << currentNode->data << " ";
+
+				currentNode = currentNode->next;
+			}
+		}
+	}
+
+	const int& Size()
+	{
+		return size;
+	}
+
+	~CircleLinkedList()
+	{
+		while (head != nullptr)
+		{
+			pop_front();
+		}
+	}
+};
 
 int main()
 {
+	CircleLinkedList<int> circleLinkedList;
+
+	circleLinkedList.push_back(10);
+	circleLinkedList.push_back(20);
+	circleLinkedList.push_back(30);
+
+	circleLinkedList.push_front(5);
+	circleLinkedList.push_front(10);
+
+	circleLinkedList.show();
 
 	return 0;
 }
