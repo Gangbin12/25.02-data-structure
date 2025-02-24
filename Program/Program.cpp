@@ -1,87 +1,34 @@
 ﻿#include <iostream>
 
-#define SIZE 5
+#define SIZE 4
 
 using namespace std;
 
-template<typename T> 
-class Stack
+template <typename T>
+class CircleQueue
 {
 private:
-	int top;
-	int size;
+	int front;
+	int rear;
+
 	T container[SIZE];
 public:
-	Stack()
+	CircleQueue()
 	{
-		top = -1;
-		size = 0;
+		rear = SIZE - 1;
+		front = SIZE - 1;
 
 		for (int i = 0; i < SIZE; i++)
 		{
 			container[i] = NULL;
 		}
-	}	
-
-	void push(T data)
-	{
-		if (top >= SIZE - 1)
-		{
-			cout << "Stack Overflow" << endl;
-		}
-		else
-		{
-			container[++top] = data;
-		}
-	}
-	
-	void pop()
-	{
-		if (Empty())
-		{
-			cout << "Stack is Empty" << endl;
-		}
-		else
-		{
-			top--;
-		}
 	}
 
-	bool Empty()
-	{
-		if (top <= -1)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 
-	const int& Size()
-	{
-		size = top + 1;
-
-		return size;
-	}
-
-	const T& Top()
-	{
-		return container[top];
-	}
 };
 
 int main()
 {
-	Stack<int> stack;
 
-	while (stack.Empty() = false)
-	{
-		cout << stack.Top() << endl;
-
-		stack.pop();
-	}
-		
 	return 0;
 }
