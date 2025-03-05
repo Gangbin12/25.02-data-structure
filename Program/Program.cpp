@@ -1,155 +1,133 @@
 ﻿#include <iostream>
 
+#define SIZE 6
+
 using namespace std;
 
-class String
+template<typename KEY, typename VALUE>
+class HashTable
 {
 private:
-	int	size;
-	char* pointer;
+    struct Node
+    {
+        KEY key;
+        VALUE value;
 
+        Node* next;
+    };
+
+    struct Bucket
+    {    // 버킷 카운트 변수
+        int count;
+        // 헤드로 연결하기 위해 포인트변수
+        Node* head;
+    };
+
+
+    Bucket bucket[SIZE];
 public:
-	String()
-	{
-		size = 0;
-		pointer = nullptr;
-	}
+    HashTable()
+    {
+        for (int i = 0; i < SIZE; i++)
+        {
+            bucket[i].count = 0;
+            bucket[i].head = nullptr;
+        }
+    }
 
-	void operator = (const char * word)
-	{
-		size = strlen(word) + 1;
+    // 문자, 정수, 실수는 알아서 작동함
+    // const char * 는 템플릿 특수화가 필요함
+    template <typename T>
+    const int & HashFunction(T key)
+    {
+        unsigned int hashIndex = (int)key % SIZE;
 
-		if (pointer == nullptr)
-		{
-			pointer = new char[size];
+        return hashIndex;
+    }
 
-			for (int i = 0; i < size; i++)
-			{
-				pointer[i] = word[i];
-			}
-		}
-		else
-		{
-			char* newPointer = new char[size];
+    template<>
+    const int & HashFunction(const char * key)
+    {
+        int hash = 0;
 
-			for (int i = 0; i < size; i++)
-			{
-				newPointer[i] = pointer[i];
-			}
+        for (int i = 0; i < strlen(key); i++)
+        {
+            hash += key[i];
+        }
 
-			delete[] pointer;
+        int hashIndex = hash % SIZE;
 
-			pointer = newPointer;
-		}
-	}
+        return hashIndex;
+    }
 
-	void Append(const char* word)
-	{
-		int resize = size;
+    Node* CreateNode(KEY key, VALUE value)
+    {
+        Node* newNode = new Node;
 
-		size = size + strlen(word ) + 1;
+        newNode->key = key;
+        newNode->value = value;
+        newNode->next = nullptr;
 
-		char* newPointer = new char[size];
+        return newNode;
+    }
 
-		for (int i = 0; i < strlen(pointer); i++)
-		{
-			newPointer[i] = pointer[i];
-		}
+    void Insert(KEY key, VALUE value)
+    {
+        //해시 함수를 통해서 값을 받는 임시 변수
+        int hashIndex = HashFunction(key);
 
-		for (int i = 0; i < strlen(word)+ 1; i++)
-		{
-			newPointer[strlen(pointer) + i] = word[i];
-		}
+        // 새로운 노드 생성
+        Node* newNode = createNode(key, value);
 
-		delete[] pointer;
+        // 노드가 1개라도 존재하지 않는다면
+        if (bucket[hashIndex].count == 0)
+        {
+            // bucket[hashIndex]의 head 포인터가 newNode를 가리키게 합니다
+            bucket[hashIndex].head = newNode;
+        }
+        else
+        {
+            newNode->next = bucket[hashIndex].head;
 
-		pointer = newPointer;
-	}
+            bucket[hashIndex].head = newNode;
+        }
+        
+        // bucket[hashIndex]의 count를 증가시킵니다.
+        bucket[hashIndex].count++;
+    }
 
-	long long Find(const char* word)
-	{
-		for (int i = 0; i > )
-	}
+    ~HashTable()
+    {
+        for (int i = 0; i < SIZE; i++)
+        {
+            Node* deleteNode = bucket[i].head;
+            Node* nextNode = bucket[i].head;
 
-	const int& Size()
-	{
-		return size - 1;
-	}
+            if (bucket[i].head == nullptr)
+            {
+                continue;
+            }
+            else
+            {
+                while (nextNode != nullptr)
+                {
+                    nextNode = deleteNode->next;
 
-	const char& operator [] (const int& index)
-	{
-		return pointer[index];
-	}
+                    delete deleteNode;
 
-	~String()
-	{
-		if (pointer != nullptr)
-		{
-			delete[] pointer;
-		}
-	}
+                    deleteNode = nextNode;
+                }
+            }
+        }
+    }
 };
 
 int main()
 {
-	String string;
+    HashTable<const char*, int> hashtable;
 
-	string = "key";
+    hashtable.Insert("Sword", 10000);
+    hashtable.Insert("Armor", 5000);
 
-	for (int i = 0; i < string.Size(); i++)
-	{
-		cout << string[i];
-	}
-
-	cout << endl;
-
-	string = "apple";
-
-	for (int i = 0; i < string.Size(); i++)
-	{
-		cout << string[i];
-	}
-
-	string.Append("Four");
-
-	for (int i = 0; i < string.Size(); i++)
-	{
-		cout << string[i];
-	}
-
-	std::string name;
-
-	name = "Alistar";
-
-	cout << name.find("st");
-
-	// String string;
-	// 
-	// string = "key";
-	// 
-	// for (int i = 0; i < string.Size(); i++)
-	// {
-	//     cout << string[i];
-	// }
-	// 
-	// cout << endl;
-	// 
-	// string = "apple";
-	// 
-	// for (int i = 0; i < string.Size(); i++)
-	// {
-	//     cout << string[i];
-	// }
-	// 
-	// cout << endl;
-	// 
-	// string.Append(" Four");
-	// string.Append(" x");
-	// 
-	// for (int i = 0; i < string.Size(); i++)
-	// {
-	//     cout << string[i];
-	// }
-
-	return 0;
+     return 0;
 }
