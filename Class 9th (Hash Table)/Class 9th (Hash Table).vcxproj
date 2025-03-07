@@ -24,6 +24,7 @@
     <ProjectGuid>{ed946bc0-f44b-4f34-be7c-655bfe49f947}</ProjectGuid>
     <RootNamespace>Class9thHashTable</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Class9th (Hash Table)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

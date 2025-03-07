@@ -5,6 +5,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{0D905327-3577-41C2-A352-D5402421CB32}|Program.vcxproj|C:\\Users\\Administrator\\Desktop\\25.02-data-structure\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0D905327-3577-41C2-A352-D5402421CB32}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65BCB9ED-F3C3-4AA6-980B-A1DDA6BB859F}|..\\Class 10th (PriorityQueue)\\Class 10th (PriorityQueue).vcxproj|C:\\Users\\Administrator\\Desktop\\25.02-data-structure\\Class 10th (PriorityQueue)\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,11 +17,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 19,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Source.cpp",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\25.02-data-structure\\Class 10th (PriorityQueue)\\Source.cpp",
+              "RelativeDocumentMoniker": "..\\Class 10th (PriorityQueue)\\Source.cpp",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\25.02-data-structure\\Class 10th (PriorityQueue)\\Source.cpp",
+              "RelativeToolTip": "..\\Class 10th (PriorityQueue)\\Source.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-07T09:23:21.95Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -28,7 +44,7 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\25.02-data-structure\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAQAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAEAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-13T09:06:04.138Z",
               "EditorCaption": ""
